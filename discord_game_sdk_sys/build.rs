@@ -66,19 +66,9 @@ fn configure_linkage(target: &str, sdk_path: &Path) {
         | "x86_64-pc-windows-msvc" => {
             println!("cargo:rustc-link-lib=discord_game_sdk");
             println!(
-                "cargo:rustc-link-search={}",
-                sdk_path.join("lib/x86_64").display()
+                "cargo:rustc-link-search=native=./resources",
             );
         }
-
-        "i686-pc-windows-gnu" | "i686-pc-windows-msvc" => {
-            println!("cargo:rustc-link-lib=discord_game_sdk");
-            println!(
-                "cargo:rustc-link-search={}",
-                sdk_path.join("lib/x86").display()
-            );
-        }
-
         _ => {}
     }
 }
